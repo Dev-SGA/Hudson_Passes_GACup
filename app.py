@@ -506,10 +506,10 @@ with col_stats:
     st.divider()
 
     st.subheader("To the Final Third")
-    c7, c8 = st.columns(2)
+    c7, c8, c9 = st.columns(2)
     c7.metric("Total", stats["to_final_third_total"])
     c8.metric("Successful", stats["to_final_third_success"])
-    st.metric("Accuracy", f'{stats["to_final_third_accuracy_pct"]:.1f}%')
+    c9.metric("Accuracy", f'{stats["to_final_third_accuracy_pct"]:.1f}%')
 
     st.divider()
 
@@ -517,16 +517,14 @@ with col_stats:
     d1, d2, d3 = st.columns(3)
     d1.metric("Total", stats["box_total"])
     d2.metric("Successful", stats["box_success"])
-    d3.metric("Unsuccessful", stats["box_unsuccess"])
-    st.metric("Accuracy", f'{stats["box_accuracy_pct"]:.1f}%')
+    d3.metric("Accuracy", f'{stats["box_accuracy_pct"]:.1f}%')
 
     st.divider()
 
     st.subheader("Switch Passes")
-    s1, s2, s3 = st.columns(3)
+    s1, s2 = st.columns(2)
     s1.metric("Total", stats["switch_total"])
     s2.metric("Successful", stats["switch_success"])
-    s3.metric("Unsuccessful", stats["switch_unsuccess"])
     sw1, sw2 = st.columns(2)
     sw1.metric("Accuracy", f'{stats["switch_accuracy_pct"]:.1f}%')
     sw2.metric("% of Total Passes", f'{stats["switch_pct_of_total"]:.1f}%')
