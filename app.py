@@ -30,22 +30,24 @@ BOX_Y_MAX = 62
 GOAL_X = 120
 GOAL_Y = 40
 
-# Limiares oficiais Opta para passes progressivos
-PROG_OWN_HALF_THRESHOLD = 30
-PROG_CROSS_HALF_THRESHOLD = 15
-PROG_OPP_HALF_THRESHOLD = 10
+# Corredores para Switch Pass (pitch StatsBomb: y vai de 0 a 80)
+# Corredor esquerdo: y >= 53.33 (terço superior)
+# Corredor central: 26.67 <= y < 53.33
+# Corredor direito: y < 26.67 (terço inferior)
+LANE_LEFT_MIN = 53.33
+LANE_RIGHT_MAX = 26.67
 
-# Cores ajustadas
+# Cores
 COLOR_SUCCESS = "#B0B0B0"
 COLOR_FAIL = "#D45B5B"
 COLOR_PROGRESSIVE = "#2F80ED"
+COLOR_SWITCH = "#DAA520"  # dourado
 
 # ==========================
 # DATA
 # ==========================
 matches_data = {
     "Vs Connecticut": [
-        # Passes certos (bloco 1)
         ("PASS WON", 26.75, 68.34, 8.97, 51.05, None),
         ("PASS WON", 31.24, 51.22, 34.57, 72.50, None),
         ("PASS WON", 36.06, 46.90, 44.37, 57.04, None),
@@ -54,7 +56,6 @@ matches_data = {
         ("PASS WON", 54.51, 49.72, 64.82, 61.69, None),
         ("PASS WON", 42.21, 70.84, 34.90, 76.49, None),
         ("PASS WON", 43.54, 75.32, 36.73, 67.84, None),
-        # Passes certos (bloco 2)
         ("PASS WON", 32.24, 53.96, 6.81, 38.50, None),
         ("PASS WON", 33.57, 65.77, 36.56, 75.57, None),
         ("PASS WON", 37.39, 61.11, 43.04, 75.41, None),
@@ -72,13 +73,11 @@ matches_data = {
         ("PASS WON", 53.18, 67.59, 39.05, 59.62, None),
         ("PASS WON", 55.18, 49.64, 54.85, 13.07, None),
         ("PASS WON", 68.64, 19.22, 49.03, 24.37, None),
-        # Passes certos (bloco 3)
         ("PASS WON", 53.35, 22.71, 59.34, 30.19, None),
         ("PASS WON", 44.37, 24.71, 40.05, 46.82, None),
         ("PASS WON", 43.88, 39.34, 41.38, 73.08, None),
         ("PASS WON", 56.84, 53.46, 70.81, 76.24, None),
         ("PASS WON", 82.77, 12.24, 91.42, 4.59, None),
-        # Passes certos (bloco 4)
         ("PASS WON", 108.04, 11.74, 115.69, 58.29, None),
         ("PASS WON", 93.08, 3.93, 111.03, 13.74, None),
         ("PASS WON", 84.60, 17.89, 96.74, 22.05, None),
@@ -90,9 +89,7 @@ matches_data = {
         ("PASS WON", 79.95, 60.45, 98.23, 60.28, None),
         ("PASS WON", 31.24, 52.14, 39.05, 72.08, None),
         ("PASS WON", 39.72, 48.98, 33.40, 57.62, None),
-        # Passes certos (bloco 5)
         ("PASS WON", 70.64, 51.47, 61.00, 51.64, None),
-        # Passes errados
         ("PASS LOST", 53.35, 19.55, 73.96, 11.24, None),
         ("PASS LOST", 63.82, 20.55, 88.76, 22.55, None),
         ("PASS LOST", 85.60, 27.86, 94.41, 37.17, None),
@@ -105,7 +102,6 @@ matches_data = {
         ("PASS LOST", 34.23, 74.91, 65.65, 78.57, None),
     ],
     "Vs Nashville": [
-        # Passes certos
         ("PASS WON", 21.27, 14.23, 29.25, 31.02, None),
         ("PASS WON", 29.41, 23.38, 34.40, 64.60, None),
         ("PASS WON", 41.55, 39.67, 41.88, 6.92, None),
@@ -121,12 +117,10 @@ matches_data = {
         ("PASS WON", 82.61, 59.12, 96.41, 68.43, None),
         ("PASS WON", 79.78, 35.35, 106.21, 11.74, None),
         ("PASS WON", 45.37, 49.64, 40.72, 32.02, None),
-        # Passes errados
         ("PASS LOST", 78.62, 64.94, 96.57, 67.10, None),
         ("PASS LOST", 85.43, 68.76, 106.05, 77.74, None),
     ],
     "Vs Seongnam": [
-        # Passes certos
         ("PASS WON", 28.08, 28.53, 29.75, 8.25, None),
         ("PASS WON", 33.74, 26.54, 29.41, 43.82, None),
         ("PASS WON", 28.08, 47.15, 31.57, 64.60, None),
@@ -147,14 +141,12 @@ matches_data = {
         ("PASS WON", 79.28, 51.14, 94.91, 70.42, None),
         ("PASS WON", 52.85, 32.85, 65.49, 25.37, None),
         ("PASS WON", 82.77, 33.18, 69.31, 47.65, None),
-        # Passes errados
         ("PASS LOST", 72.14, 16.56, 78.45, 1.60, None),
         ("PASS LOST", 79.62, 27.53, 97.07, 47.98, None),
         ("PASS LOST", 91.75, 50.14, 109.70, 65.77, None),
         ("PASS LOST", 96.41, 56.79, 107.04, 67.26, None),
     ],
     "Vs Red Bull": [
-        # Passes certos
         ("PASS WON", 39.39, 19.39, 52.35, 4.76, None),
         ("PASS WON", 63.82, 7.92, 72.63, 1.43, None),
         ("PASS WON", 70.47, 11.91, 80.95, 13.74, None),
@@ -176,7 +168,6 @@ matches_data = {
         ("PASS WON", 26.09, 63.94, 28.42, 76.74, None),
         ("PASS WON", 22.43, 56.62, 22.10, 76.41, None),
         ("PASS WON", 33.90, 64.77, 25.42, 73.58, None),
-        # Passes errados
         ("PASS LOST", 41.88, 42.49, 56.18, 52.97, None),
         ("PASS LOST", 37.56, 41.16, 46.37, 53.96, None),
         ("PASS LOST", 54.68, 56.96, 54.85, 64.44, None),
@@ -195,24 +186,47 @@ def distance_to_goal(x, y):
     return np.sqrt((GOAL_X - x) ** 2 + (GOAL_Y - y) ** 2)
 
 
+def get_lane(y):
+    """Retorna o corredor: 'left', 'center' ou 'right'."""
+    if y >= LANE_LEFT_MIN:
+        return "left"
+    elif y < LANE_RIGHT_MAX:
+        return "right"
+    else:
+        return "center"
+
+
+def is_switch_pass(y_start, y_end) -> bool:
+    """Switch Pass: muda do corredor esquerdo para direito ou vice-versa."""
+    lane_start = get_lane(y_start)
+    lane_end = get_lane(y_end)
+    if lane_start == "left" and lane_end == "right":
+        return True
+    if lane_start == "right" and lane_end == "left":
+        return True
+    return False
+
+
 def is_progressive_pass(x_start, y_start, x_end, y_end) -> bool:
+    """
+    Progressive Pass:
+    Um passe COMPLETADO nos dois terços ofensivos do campo (x_start >= 40)
+    que move a bola pelo menos 25% mais perto do gol.
+    """
+    # Deve começar nos dois terços ofensivos (attacking two-thirds)
+    if x_start < 40:
+        return False
+
     start_dist = distance_to_goal(x_start, y_start)
     end_dist = distance_to_goal(x_end, y_end)
-    gain = start_dist - end_dist
 
-    start_own_half = x_start < 60
-    end_own_half = x_end < 60
-    end_opp_half = x_end >= 60
-    start_opp_half = x_start >= 60
-
-    if start_own_half and end_own_half:
-        return gain >= PROG_OWN_HALF_THRESHOLD
-    elif start_own_half and end_opp_half:
-        return gain >= PROG_CROSS_HALF_THRESHOLD
-    elif start_opp_half and end_opp_half:
-        return gain >= PROG_OPP_HALF_THRESHOLD
-    else:
+    # Evitar divisão por zero
+    if start_dist == 0:
         return False
+
+    # A bola deve ficar pelo menos 25% mais perto do gol
+    reduction_pct = (start_dist - end_dist) / start_dist
+    return reduction_pct >= 0.25
 
 
 # ==========================
@@ -225,12 +239,23 @@ for match_name, events in matches_data.items():
         columns=["type", "x_start", "y_start", "x_end", "y_end", "video"],
     )
     dfm["number"] = np.arange(1, len(dfm) + 1)
+
+    dfm["is_won"] = dfm["type"].str.contains("WON", case=False)
+
+    # Progressive: só para passes completados
     dfm["progressive"] = dfm.apply(
-        lambda row: is_progressive_pass(
+        lambda row: row["is_won"] and is_progressive_pass(
             row["x_start"], row["y_start"], row["x_end"], row["y_end"]
         ),
         axis=1,
     )
+
+    # Switch: tentados e completados (todos os passes)
+    dfm["switch"] = dfm.apply(
+        lambda row: is_switch_pass(row["y_start"], row["y_end"]),
+        axis=1,
+    )
+
     dfs_by_match[match_name] = dfm
 
 df_all = pd.concat(dfs_by_match.values(), ignore_index=True)
@@ -242,48 +267,43 @@ full_data.update(dfs_by_match)
 # ==========================
 def compute_stats(df: pd.DataFrame) -> dict:
     total_passes = len(df)
-    successful = int(df["type"].str.contains("WON", case=False).sum())
-    unsuccessful = int(df["type"].str.contains("LOST", case=False).sum())
+    successful = int(df["is_won"].sum())
+    unsuccessful = total_passes - successful
     accuracy = (successful / total_passes * 100.0) if total_passes else 0.0
 
+    # Progressive (já filtrado para WON no build)
     progressive_total = int(df["progressive"].sum())
-    progressive_successful = int(
-        (df["progressive"] & df["type"].str.contains("WON", case=False)).sum()
-    )
     progressive_accuracy = (
-        progressive_successful / progressive_total * 100.0
-        if progressive_total
-        else 0.0
+        progressive_total / successful * 100.0 if successful else 0.0
     )
 
     key_passes = int(df["video"].apply(has_video_value).sum())
 
-    # To the Final Third: passe começa FORA do terço final e termina DENTRO
+    # To the Final Third
     to_final_third = (df["x_start"] < FINAL_THIRD_LINE_X) & (df["x_end"] >= FINAL_THIRD_LINE_X)
     to_final_third_total = int(to_final_third.sum())
-    to_final_third_success = int(
-        (to_final_third & df["type"].str.contains("WON", case=False)).sum()
-    )
-    to_final_third_unsuccess = int(
-        (to_final_third & df["type"].str.contains("LOST", case=False)).sum()
-    )
+    to_final_third_success = int((to_final_third & df["is_won"]).sum())
+    to_final_third_unsuccess = to_final_third_total - to_final_third_success
     to_final_third_accuracy = (
         (to_final_third_success / to_final_third_total * 100.0) if to_final_third_total else 0.0
     )
 
+    # Into the Box
     to_box = (
         (df["x_end"] >= BOX_X_MIN)
         & (df["y_end"] >= BOX_Y_MIN)
         & (df["y_end"] <= BOX_Y_MAX)
     )
     box_total = int(to_box.sum())
-    box_success = int(
-        (to_box & df["type"].str.contains("WON", case=False)).sum()
-    )
-    box_unsuccess = int(
-        (to_box & df["type"].str.contains("LOST", case=False)).sum()
-    )
+    box_success = int((to_box & df["is_won"]).sum())
+    box_unsuccess = box_total - box_success
     box_accuracy = (box_success / box_total * 100.0) if box_total else 0.0
+
+    # Switch Pass
+    switch_total = int(df["switch"].sum())
+    switch_success = int((df["switch"] & df["is_won"]).sum())
+    switch_unsuccess = switch_total - switch_success
+    switch_accuracy = (switch_success / switch_total * 100.0) if switch_total else 0.0
 
     return {
         "total_passes": total_passes,
@@ -292,7 +312,6 @@ def compute_stats(df: pd.DataFrame) -> dict:
         "accuracy_pct": round(accuracy, 2),
         "key_passes": key_passes,
         "progressive_passes": progressive_total,
-        "progressive_successful_passes": progressive_successful,
         "progressive_accuracy_pct": round(progressive_accuracy, 2),
         "to_final_third_total": to_final_third_total,
         "to_final_third_success": to_final_third_success,
@@ -302,6 +321,10 @@ def compute_stats(df: pd.DataFrame) -> dict:
         "box_success": box_success,
         "box_unsuccess": box_unsuccess,
         "box_accuracy_pct": round(box_accuracy, 2),
+        "switch_total": switch_total,
+        "switch_success": switch_success,
+        "switch_unsuccess": switch_unsuccess,
+        "switch_accuracy_pct": round(switch_accuracy, 2),
     }
 
 
@@ -326,19 +349,28 @@ def draw_pass_map(df: pd.DataFrame, title: str):
     START_DOT_SIZE = 45
 
     for _, row in df.iterrows():
-        is_lost = "LOST" in row["type"].upper()
-        is_progressive_success = bool(row["progressive"]) and not is_lost
+        is_lost = not row["is_won"]
+        is_progressive = bool(row["progressive"])
+        is_switch = bool(row["switch"])
         has_vid = has_video_value(row["video"])
 
+        # Hierarquia de cor: fail > switch > progressive > success
         if is_lost:
-            color = COLOR_FAIL
-            alpha = 0.55
-        elif is_progressive_success:
+            if is_switch:
+                color = COLOR_SWITCH
+                alpha = 0.60
+            else:
+                color = COLOR_FAIL
+                alpha = 0.55
+        elif is_switch:
+            color = COLOR_SWITCH
+            alpha = 0.85
+        elif is_progressive:
             color = COLOR_PROGRESSIVE
             alpha = 0.82
         else:
             color = COLOR_SUCCESS
-            alpha = 0.55
+            alpha = 0.35  # passes certos mais transparentes
 
         pitch.arrows(
             row["x_start"], row["y_start"],
@@ -363,10 +395,14 @@ def draw_pass_map(df: pd.DataFrame, title: str):
     ax.set_title(title, fontsize=12)
 
     legend_elements = [
-        Line2D([0], [0], color=COLOR_SUCCESS, lw=2.5, label="Successful Pass"),
-        Line2D([0], [0], color=COLOR_FAIL, lw=2.5, label="Unsuccessful Pass"),
+        Line2D([0], [0], color=COLOR_SUCCESS, lw=2.5, alpha=0.35,
+               label="Successful Pass"),
+        Line2D([0], [0], color=COLOR_FAIL, lw=2.5,
+               label="Unsuccessful Pass"),
         Line2D([0], [0], color=COLOR_PROGRESSIVE, lw=2.5,
-               label="Successful Progressive Pass (Opta)"),
+               label="Progressive Pass"),
+        Line2D([0], [0], color=COLOR_SWITCH, lw=2.5,
+               label="Switch Pass"),
         Line2D([0], [0], marker="o", color="w", markerfacecolor="gray",
                markeredgecolor="white", markersize=6, label="Start point (click)"),
         Line2D([0], [0], marker="o", color="w", markerfacecolor="gray",
@@ -410,20 +446,30 @@ selected_match = st.sidebar.radio(
 st.sidebar.header("Pass Filter")
 pass_filter = st.sidebar.radio(
     "Filter passes",
-    ["All Passes", "Successful Only", "Unsuccessful Only", "Progressive Only"],
+    [
+        "All Passes",
+        "Successful Only",
+        "Unsuccessful Only",
+        "Progressive Only",
+        "To Final Third",
+        "Switch Only",
+    ],
     index=0,
 )
 
 df = full_data[selected_match].copy()
 
 if pass_filter == "Successful Only":
-    df = df[df["type"].str.contains("WON", case=False)].reset_index(drop=True)
+    df = df[df["is_won"]].reset_index(drop=True)
 elif pass_filter == "Unsuccessful Only":
-    df = df[df["type"].str.contains("LOST", case=False)].reset_index(drop=True)
+    df = df[~df["is_won"]].reset_index(drop=True)
 elif pass_filter == "Progressive Only":
-    df = df[
-        df["progressive"] & df["type"].str.contains("WON", case=False)
-    ].reset_index(drop=True)
+    df = df[df["progressive"]].reset_index(drop=True)
+elif pass_filter == "To Final Third":
+    mask = (df["x_start"] < FINAL_THIRD_LINE_X) & (df["x_end"] >= FINAL_THIRD_LINE_X)
+    df = df[mask].reset_index(drop=True)
+elif pass_filter == "Switch Only":
+    df = df[df["switch"]].reset_index(drop=True)
 
 stats = compute_stats(df)
 
@@ -448,10 +494,9 @@ with col_stats:
     st.divider()
 
     st.subheader("Progressive Passes")
-    p1, p2, p3 = st.columns(3)
+    p1, p2 = st.columns(2)
     p1.metric("Total", stats["progressive_passes"])
-    p2.metric("Successful", stats["progressive_successful_passes"])
-    p3.metric("Accuracy", f'{stats["progressive_accuracy_pct"]:.1f}%')
+    p2.metric("% of Completed", f'{stats["progressive_accuracy_pct"]:.1f}%')
 
     st.divider()
 
@@ -470,6 +515,15 @@ with col_stats:
     d2.metric("Successful", stats["box_success"])
     d3.metric("Unsuccessful", stats["box_unsuccess"])
     st.metric("Accuracy", f'{stats["box_accuracy_pct"]:.1f}%')
+
+    st.divider()
+
+    st.subheader("Switch Passes")
+    s1, s2, s3 = st.columns(3)
+    s1.metric("Total", stats["switch_total"])
+    s2.metric("Successful", stats["switch_success"])
+    s3.metric("Unsuccessful", stats["switch_unsuccess"])
+    st.metric("Accuracy", f'{stats["switch_accuracy_pct"]:.1f}%')
 
 with col_right:
     st.subheader("Pass Map (click the start dot)")
@@ -521,6 +575,7 @@ with col_right:
             f"End: ({selected_pass['x_end']:.2f}, {selected_pass['y_end']:.2f})"
         )
         st.write(f"Progressive: {'Yes' if selected_pass['progressive'] else 'No'}")
+        st.write(f"Switch Pass: {'Yes' if selected_pass['switch'] else 'No'}")
 
         if has_video_value(selected_pass["video"]):
             try:
