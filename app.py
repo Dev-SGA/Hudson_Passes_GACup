@@ -506,7 +506,7 @@ with col_stats:
     st.divider()
 
     st.subheader("To the Final Third")
-    c7, c8, c9 = st.columns(2)
+    c7, c8, c9 = st.columns(3)
     c7.metric("Total", stats["to_final_third_total"])
     c8.metric("Successful", stats["to_final_third_success"])
     c9.metric("Accuracy", f'{stats["to_final_third_accuracy_pct"]:.1f}%')
