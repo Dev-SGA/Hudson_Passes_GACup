@@ -44,7 +44,7 @@ COLOR_SWITCH = "#DAA520"
 # DATA
 # ==========================
 matches_data = {
-    "Game 1": [
+    "Match 1": [
         ("PASS WON", 26.75, 68.34, 8.97, 51.05, None),
         ("PASS WON", 31.24, 51.22, 34.57, 72.50, None),
         ("PASS WON", 36.06, 46.90, 44.37, 57.04, None),
@@ -98,7 +98,7 @@ matches_data = {
         ("PASS LOST", 56.18, 49.48, 97.07, 62.11, None),
         ("PASS LOST", 34.23, 74.91, 65.65, 78.57, None),
     ],
-    "Game 2": [
+    "Match 2": [
         ("PASS WON", 21.27, 14.23, 29.25, 31.02, None),
         ("PASS WON", 29.41, 23.38, 34.40, 64.60, None),
         ("PASS WON", 41.55, 39.67, 41.88, 6.92, None),
@@ -117,7 +117,7 @@ matches_data = {
         ("PASS LOST", 78.62, 64.94, 96.57, 67.10, None),
         ("PASS LOST", 85.43, 68.76, 106.05, 77.74, None),
     ],
-    "Game 3": [
+    "Match 3": [
         ("PASS WON", 28.08, 28.53, 29.75, 8.25, None),
         ("PASS WON", 33.74, 26.54, 29.41, 43.82, None),
         ("PASS WON", 28.08, 47.15, 31.57, 64.60, None),
@@ -143,7 +143,7 @@ matches_data = {
         ("PASS LOST", 91.75, 50.14, 109.70, 65.77, None),
         ("PASS LOST", 96.41, 56.79, 107.04, 67.26, None),
     ],
-    "Game 4": [
+    "Match 4": [
         ("PASS WON", 39.39, 19.39, 52.35, 4.76, None),
         ("PASS WON", 63.82, 7.92, 72.63, 1.43, None),
         ("PASS WON", 70.47, 11.91, 80.95, 13.74, None),
